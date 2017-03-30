@@ -1,0 +1,39 @@
+<!--电影列表开始-->
+<div class="list">
+  <ul>
+    <li ng-repeat="movie in movieList.subjects track by $index" style="text-align: center">
+      <a href="#/details/{{movie.id}}" style="position: relative">
+        <!-- 浏览器会优先解析图片的src属性，来发送请求请求图片 -->
+        <!-- 使用 ng-src 指令，angular会解析这个指令，并且解析完毕以后，会自动给当前
+          图片元素添加一个 src 属性，属性的值就是：{{movie.images.large}} 的值，这样
+          图片路径，就可以被正确解析了！
+         -->
+        <img class="moviePhoto" img-load ng-src="{{movie.images.large}}"  >
+        <div class="sk-cube-grid" >
+          <div class="sk-cube sk-cube1"></div>
+          <div class="sk-cube sk-cube2"></div>
+          <div class="sk-cube sk-cube3"></div>
+          <div class="sk-cube sk-cube4"></div>
+          <div class="sk-cube sk-cube5"></div>
+          <div class="sk-cube sk-cube6"></div>
+          <div class="sk-cube sk-cube7"></div>
+          <div class="sk-cube sk-cube8"></div>
+          <div class="sk-cube sk-cube9"></div>
+        </div>
+        <!--<img src="./assets/img/loading.gif" alt="loading" class="loading">-->
+      </a>
+      <div class="meta">
+        <h4><span>{{movie.title}}</span> <em>{{movie.rating.average}}分</em></h4>
+        <div class="otherinfo">类型:<span ng-repeat="gen in movie.genres track by $index">{{gen}}</span></div>
+      </div>
+    </li>
+  </ul>
+  <div class="paging">
+    <label>总共：<span ng-bind="movieList.total"></span>条记录,
+      第<span ng-bind="currentPage"></span>/<span ng-bind="page"></span>页;</label>
+    <!-- 加上disable类样式，表示按钮禁用状态 -->
+    <button class="prev" ng-class="{disable:currentPage <= 1}" ng-disabled="currentPage <= 1" ng-click="changePage(start-count);">上一页</button>
+    <button class="next" ng-class="{disable:currentPage >= page}" ng-disabled="currentPage >= page" ng-click="changePage(start+count);" >下一页</button>
+  </div>
+</div>
+<!--电影列表结束-->
