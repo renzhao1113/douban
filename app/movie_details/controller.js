@@ -1,4 +1,4 @@
-`/**
+/**
  * Created by 任钊 on 2017/3/18.
  */
 (function (angular) {

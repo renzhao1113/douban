@@ -73,11 +73,13 @@
 				});
 			}
 		}])
+		//自定义图片加载指令
 		.directive("imgLoad",function () {
 			return{
 				// templateUrl:"./movie_list/imgs.html",
-				restrict : "A",
-				link:function (scope,element) {
+				restrict : "A",  //限定改指令为attribute
+				//这里的element指的是img-load这个指令所在的图片元素
+				link: function (scope,element) {
 					element.on("load",function () {
 						// scope.isLoading = false;
 						element[0].style.display = "block";
